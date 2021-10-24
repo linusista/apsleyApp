@@ -13,32 +13,32 @@ import 'package:url_launcher/url_launcher.dart';
 class MyInAppBrowser extends InAppBrowser {
   @override
   Future onBrowserCreated() async {
-    print("Browser Created!");
+    //print("Browser Created!");
   }
 
   @override
   Future onLoadStart(url) async {
-    print("Started $url");
+    //print("Started $url");
   }
 
   @override
   Future onLoadStop(url) async {
-    print("Stopped $url");
+    //print("Stopped $url");
   }
 
   @override
   void onLoadError(url, code, message) {
-    print("Can't load $url.. Error: $message");
+    //print("Can't load $url.. Error: $message");
   }
 
   @override
   void onProgressChanged(progress) {
-    print("Progress: $progress");
+    //print("Progress: $progress");
   }
 
   @override
   void onExit() {
-    print("Browser closed!");
+    //print("Browser closed!");
   }
 }
 
@@ -62,14 +62,14 @@ Future main() async {
 }
 
 void launchWhatsapp() async {
-  var whatsappURl_android = "whatsapp://send?phone=+421944315610&text=Hello";
-  var whatappURL_ios ="https://wa.me/+421944315610?text=${Uri.parse("hello")}";
+  var whatsappURlAndroid = "whatsapp://send?phone=+421944315610&text=Hello";
+  var whatsappURLIos ="https://wa.me/+421944315610?text=${Uri.parse("hello")}";
 
 
   if(Platform.isIOS){
     // for iOS phone only
-    if( await canLaunch(whatappURL_ios)){
-      await launch(whatappURL_ios, forceSafariVC: false);
+    if( await canLaunch(whatsappURLIos)){
+      await launch(whatsappURLIos, forceSafariVC: false);
     }/*else{
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: new Text("whatsapp not installed")));
@@ -77,8 +77,8 @@ void launchWhatsapp() async {
 
   }else{
     // android , web
-    if( await canLaunch(whatsappURl_android)){
-      await launch(whatsappURl_android);
+    if( await canLaunch(whatsappURlAndroid)){
+      await launch(whatsappURlAndroid);
     }/*else{
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: new Text("whatsapp no installed")));
@@ -87,23 +87,25 @@ void launchWhatsapp() async {
 }
 
 class MyApp extends StatefulWidget {
-  final MyInAppBrowser browser = new MyInAppBrowser();
+  final MyInAppBrowser browser = MyInAppBrowser();
+
+  MyApp({Key? key}) : super(key: key);
 
 
   /*void launchWhatsapp({@required number, @required message}) async {
     String whatsappURl_android = "whatsapp://send?phone=$number&text=$message";
 
-    await canLaunch(whatsappURl_android) ? lanuch(whatsappURl_android) : print("Can't open whatsapp");
+    await canLaunch(whatsappURl_android) ? launch(whatsappURl_android) : print("Can't open whatsapp");
   }*/
 
-  /*openwhatsapp() async{
+  /*OpenWhatsapp() async{
     var whatsapp ="+447972752215";
     var whatsappURl_android = "whatsapp://send?phone="+whatsapp+"&text=hello";
-    var whatappURL_ios ="https://wa.me/$whatsapp?text=${Uri.parse("hello")}";
+    var whatsappURL_ios ="https://wa.me/$whatsapp?text=${Uri.parse("hello")}";
     if(Platform.isIOS){
       // for iOS phone only
-      if( await canLaunch(whatappURL_ios)){
-        await launch(whatappURL_ios, forceSafariVC: false);
+      if( await canLaunch(whatsappURL_ios)){
+        await launch(whatsappURL_ios, forceSafariVC: false);
       }else{
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: new Text("whatsapp not installed")));
@@ -121,7 +123,7 @@ class MyApp extends StatefulWidget {
   }*/
 
   @override
-  _MyAppState createState() => new _MyAppState();
+  _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
@@ -149,7 +151,7 @@ class _MyAppState extends State<MyApp> {
       return Scaffold(
         extendBodyBehindAppBar: true,
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage('assets/london_blurred.png'),
               fit: BoxFit.cover,
@@ -165,14 +167,14 @@ class _MyAppState extends State<MyApp> {
                   //crossAxisAlignment: CrossAxisAlignment.stretch,
                   //mainAxisSize: MainAxisSize.max,
                   children: [
-                    ApsleyLogo(logoSize: 132), // Apsley Logo
-                    Spacer(),
+                    const ApsleyLogo(logoSize: 132), // Apsley Logo
+                    const Spacer(),
                     Expanded(
                       flex: 5,
-                      child: Container(
+                      child: SizedBox(
                         width: panelWidth,
                         //color: Colors.pink,
-                        child: Align(
+                        child: const Align(
                           alignment: Alignment.center,
                           child: FittedBox(
                             fit: BoxFit.scaleDown,
@@ -191,8 +193,8 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     ), //Welcome panel
-                    Spacer(),
-                    Container(
+                    const Spacer(),
+                    SizedBox(
                       width: panelWidth,
                       height: 72.0,
                       child: Column(
@@ -229,7 +231,7 @@ class _MyAppState extends State<MyApp> {
                         ],
                       ),
                     ), // Login panel
-                    Container(
+                    SizedBox(
                       width: panelWidth,
                       height: 48,
                       child: Center(
@@ -241,7 +243,7 @@ class _MyAppState extends State<MyApp> {
                               onPressed: () => launch("mailto:info@apsley.eu"),
                               style: TextButton.styleFrom(
                                 elevation: 0,
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 primary: Colors.white70,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(Radius.circular(24))),
@@ -262,7 +264,7 @@ class _MyAppState extends State<MyApp> {
                               },
                               style: TextButton.styleFrom(
                                 elevation: 0,
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 primary: Colors.white70,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(Radius.circular(24))),
@@ -282,7 +284,7 @@ class _MyAppState extends State<MyApp> {
                             },*/
                               style: TextButton.styleFrom(
                                 elevation: 0,
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 primary: Colors.white70,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(Radius.circular(24))),
@@ -324,7 +326,7 @@ class _MyAppState extends State<MyApp> {
                               },
                               style: TextButton.styleFrom(
                                 elevation: 0,
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 primary: Colors.white70,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(Radius.circular(24))),
@@ -345,7 +347,7 @@ class _MyAppState extends State<MyApp> {
                               },
                               style: TextButton.styleFrom(
                                 elevation: 0,
-                                padding: EdgeInsets.all(6.0),
+                                padding: const EdgeInsets.all(6.0),
                                 primary: Colors.white70,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(Radius.circular(24))),
@@ -363,21 +365,21 @@ class _MyAppState extends State<MyApp> {
                     Container(
                       width: panelWidth,
                       height: 64,
-                      padding: EdgeInsets.all(6.0),
+                      padding: const EdgeInsets.all(6.0),
                       child: Center(
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             TextButton.icon(
                               onPressed: () => launch("tel://+44 20 3286 6718"),
-                              label: Text('+44 (0) 20 3286 6718'),
+                              label: const Text('+44 (0) 20 3286 6718'),
                               style: TextButton.styleFrom(
-                                padding: EdgeInsets.all(12.0),
+                                padding: const EdgeInsets.all(12.0),
                                 primary: Colors.white70,
                                 shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.all(
                                         Radius.circular(24))),
-                                textStyle: TextStyle(
+                                textStyle: const TextStyle(
                                   fontSize: 17.0,
                                   letterSpacing: 2,
                                   fontFamily: 'Montserrat',
@@ -403,11 +405,10 @@ class _MyAppState extends State<MyApp> {
       );
     }
   }
-}
 
 class ApsleyLogo extends StatelessWidget {
 
-  ApsleyLogo({required this.logoSize});
+  const ApsleyLogo({required this.logoSize});
 
   final double logoSize;
 
@@ -415,12 +416,12 @@ class ApsleyLogo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       flex: 5,
-      child: Container(
+      child: SizedBox(
         //color: Colors.blue,
         height: logoSize,
         //width: 0,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 64.0),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(vertical: 0, horizontal: 64.0),
           child: Image(
             //color: Colors.white12,
             image: AssetImage('assets/abs_logo-1-300x132.png'),
@@ -434,7 +435,7 @@ class ApsleyLogo extends StatelessWidget {
 
 class DefaultButton extends StatelessWidget {
 
-  DefaultButton({required this.label, required this.target});
+  const DefaultButton({required this.label, required this.target});
 
   final String label;
   final String target;
@@ -452,7 +453,7 @@ class DefaultButton extends StatelessWidget {
         child: Align(
           alignment: Alignment.center,
           child: Text(
-            '$label',
+            label,
             style: TextStyle(
               color: Colors.blueGrey[800],
               fontSize: 17.0,
@@ -468,25 +469,23 @@ class DefaultButton extends StatelessWidget {
 }
 
 class Header extends StatelessWidget {
-  Header({required this.label});
+  const Header({required this.label});
 
   final String label;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Align(
-        alignment: Alignment.topCenter,
-        child: Text(
-          '$label',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            letterSpacing: 2,
-            fontFamily: 'Montserrat',
-            fontWeight: FontWeight.w100,
-          ),
+    return Align(
+      alignment: Alignment.topCenter,
+      child: Text(
+        label,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
+          color: Colors.white,
+          fontSize: 28,
+          letterSpacing: 2,
+          fontFamily: 'Montserrat',
+          fontWeight: FontWeight.w100,
         ),
       ),
     );
