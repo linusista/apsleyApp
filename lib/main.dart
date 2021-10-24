@@ -141,158 +141,161 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(
-        SystemUiMode.manual, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      body: Container(
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage('assets/london_blurred.png'),
-            fit: BoxFit.cover,
-            alignment: Alignment.centerRight,
+    if(Platform.isIOS){
+    }else{
+      SystemChrome.setEnabledSystemUIMode(
+          SystemUiMode.manual, overlays: [SystemUiOverlay.top, SystemUiOverlay.bottom]);
+    }
+      return Scaffold(
+        extendBodyBehindAppBar: true,
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/london_blurred.png'),
+              fit: BoxFit.cover,
+              alignment: Alignment.centerRight,
+            ),
           ),
-        ),
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 16.0),
-            child: SizedBox.expand(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                //crossAxisAlignment: CrossAxisAlignment.stretch,
-                //mainAxisSize: MainAxisSize.max,
-                children: [
-                  ApsleyLogo(logoSize: 132), // Apsley Logo
-                  Spacer(),
-                  Expanded(
-                    flex: 5,
-                    child: Container(
-                      width: panelWidth,
-                      //color: Colors.pink,
-                      child: Align(
-                        alignment: Alignment.center,
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          child: Text(
-                            'Welcome to the\nApsley App',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 22.0,
-                              letterSpacing: 2,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w100,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ), //Welcome panel
-                  Spacer(),
-                  Container(
-                    width: panelWidth,
-                    height: 72.0,
-                    child: Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            widget.browser.openUrlRequest(
-                                urlRequest: URLRequest(url: Uri.parse("https://apsley.cloud/portal/my/")),
-                                options: options);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.amber,
-                            //side: BorderSide(color: Colors.white70, width: 2),
-                            shape: const RoundedRectangleBorder(
-                                borderRadius: BorderRadius.all(
-                                    Radius.circular(24))),
-                          ),
-                          child: SizedBox(width: double.infinity, height: 48,
-                            child: Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                'Student Login',
-                                style: TextStyle(
-                                  color: Colors.blueGrey[800],
-                                  fontSize: 17.0,
-                                  letterSpacing: 2,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w900,
-                                ),
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 16.0),
+              child: SizedBox.expand(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  //crossAxisAlignment: CrossAxisAlignment.stretch,
+                  //mainAxisSize: MainAxisSize.max,
+                  children: [
+                    ApsleyLogo(logoSize: 132), // Apsley Logo
+                    Spacer(),
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        width: panelWidth,
+                        //color: Colors.pink,
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              'Welcome to the\nApsley App',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 22.0,
+                                letterSpacing: 2,
+                                fontFamily: 'Montserrat',
+                                fontWeight: FontWeight.w100,
                               ),
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ), // Login panel
-                  Container(
-                    width: panelWidth,
-                    height: 48,
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                    ), //Welcome panel
+                    Spacer(),
+                    Container(
+                      width: panelWidth,
+                      height: 72.0,
+                      child: Column(
                         children: [
-                          // mail
-                          TextButton(
-                            onPressed: () => launch("mailto:info@apsley.eu"),
-                            style: TextButton.styleFrom(
-                              elevation: 0,
-                              padding: EdgeInsets.all(6.0),
-                              primary: Colors.white70,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(24))),
-                            ),
-                            child: Image.asset(
-                              'assets/icon_email.png',
-                              color: Colors.white54,
-                              height: 32.0,
-                            ),
-                          ),
-
-                          // linked in
-                          TextButton(
+                          ElevatedButton(
                             onPressed: () {
                               widget.browser.openUrlRequest(
-                                  urlRequest: URLRequest(url: Uri.parse("https://www.linkedin.com/school/apsley-business-school-london/")),
+                                  urlRequest: URLRequest(url: Uri.parse("https://apsley.cloud/portal/my/")),
                                   options: options);
                             },
-                            style: TextButton.styleFrom(
-                              elevation: 0,
-                              padding: EdgeInsets.all(6.0),
-                              primary: Colors.white70,
+                            style: ElevatedButton.styleFrom(
+                              primary: Colors.amber,
+                              //side: BorderSide(color: Colors.white70, width: 2),
                               shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(24))),
+                                  borderRadius: BorderRadius.all(
+                                      Radius.circular(24))),
                             ),
-                            child: Image.asset(
-                              'assets/icon_linkedIn.png',
-                              color: Colors.white54,
-                              height: 32.0,
+                            child: SizedBox(width: double.infinity, height: 48,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  'Student Login',
+                                  style: TextStyle(
+                                    color: Colors.blueGrey[800],
+                                    fontSize: 17.0,
+                                    letterSpacing: 2,
+                                    fontFamily: 'Montserrat',
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
+                        ],
+                      ),
+                    ), // Login panel
+                    Container(
+                      width: panelWidth,
+                      height: 48,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // mail
+                            TextButton(
+                              onPressed: () => launch("mailto:info@apsley.eu"),
+                              style: TextButton.styleFrom(
+                                elevation: 0,
+                                padding: EdgeInsets.all(6.0),
+                                primary: Colors.white70,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(24))),
+                              ),
+                              child: Image.asset(
+                                'assets/icon_email.png',
+                                color: Colors.white54,
+                                height: 32.0,
+                              ),
+                            ),
 
-                          // whatsapp
-                          TextButton(
-                            onPressed: () => launch("whatsapp://send?phone=+447310714895text=Hello, I'd like to know more about your programs"),
-                            /*onPressed: () {
+                            // linked in
+                            TextButton(
+                              onPressed: () {
+                                widget.browser.openUrlRequest(
+                                    urlRequest: URLRequest(url: Uri.parse("https://www.linkedin.com/school/apsley-business-school-london/")),
+                                    options: options);
+                              },
+                              style: TextButton.styleFrom(
+                                elevation: 0,
+                                padding: EdgeInsets.all(6.0),
+                                primary: Colors.white70,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(24))),
+                              ),
+                              child: Image.asset(
+                                'assets/icon_linkedIn.png',
+                                color: Colors.white54,
+                                height: 32.0,
+                              ),
+                            ),
+
+                            // whatsapp
+                            TextButton(
+                              onPressed: () => launch("whatsapp://send?phone=+447310714895text=Hello, I'd like to know more about your programs"),
+                              /*onPressed: () {
                               launchWhatsapp();
                             },*/
-                            style: TextButton.styleFrom(
-                              elevation: 0,
-                              padding: EdgeInsets.all(6.0),
-                              primary: Colors.white70,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(24))),
+                              style: TextButton.styleFrom(
+                                elevation: 0,
+                                padding: EdgeInsets.all(6.0),
+                                primary: Colors.white70,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(24))),
+                              ),
+                              child: Image.asset(
+                                'assets/icon_whatsapp.png',
+                                color: Colors.white54,
+                                height: 32.0,
+                              ),
                             ),
-                            child: Image.asset(
-                              'assets/icon_whatsapp.png',
-                              color: Colors.white54,
-                              height: 32.0,
-                            ),
-                          ),
 
-                          // instagram
-                          /*TextButton(
+                            // instagram
+                            /*TextButton(
                             onPressed: () {
                               widget.browser.openUrlRequest(
                                   urlRequest: URLRequest(url: Uri.parse("https://www.instagram.com/apsleylondon/")),
@@ -312,92 +315,93 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),*/
 
-                          //facebook
-                          TextButton(
-                            onPressed: () {
-                              widget.browser.openUrlRequest(
-                                  urlRequest: URLRequest(url: Uri.parse("https://www.facebook.com/apsleybusinessschool/")),
-                                  options: options);
-                            },
-                            style: TextButton.styleFrom(
-                              elevation: 0,
-                              padding: EdgeInsets.all(6.0),
-                              primary: Colors.white70,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(24))),
-                            ),
-                            child: Image.asset(
-                              'assets/icon_facebook_white.png',
-                              color: Colors.white54,
-                              height: 32.0,
-                            ),
-                          ),
-
-                          //twitter
-                          TextButton(
-                            onPressed: () {
-                              widget.browser.openUrlRequest(
-                                  urlRequest: URLRequest(url: Uri.parse("https://twitter.com/ApsleyLondon/")),
-                                  options: options);
-                            },
-                            style: TextButton.styleFrom(
-                              elevation: 0,
-                              padding: EdgeInsets.all(6.0),
-                              primary: Colors.white70,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(Radius.circular(24))),
-                            ),
-                            child: Image.asset(
-                              'assets/icon_twitter.png',
-                              color: Colors.white54,
-                              height: 32.0,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ), // Social Networks
-                  Container(
-                    width: panelWidth,
-                    height: 64,
-                    padding: EdgeInsets.all(6.0),
-                    child: Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          TextButton.icon(
-                            onPressed: () => launch("tel://+44 20 3286 6718"),
-                            label: Text('+44 (0) 20 3286 6718'),
-                            style: TextButton.styleFrom(
-                              padding: EdgeInsets.all(12.0),
-                              primary: Colors.white70,
-                              shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(24))),
-                              textStyle: TextStyle(
-                                fontSize: 17.0,
-                                letterSpacing: 2,
-                                fontFamily: 'Montserrat',
-                                fontWeight: FontWeight.w900,
+                            //facebook
+                            TextButton(
+                              onPressed: () {
+                                widget.browser.openUrlRequest(
+                                    urlRequest: URLRequest(url: Uri.parse("https://www.facebook.com/apsleybusinessschool/")),
+                                    options: options);
+                              },
+                              style: TextButton.styleFrom(
+                                elevation: 0,
+                                padding: EdgeInsets.all(6.0),
+                                primary: Colors.white70,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(24))),
+                              ),
+                              child: Image.asset(
+                                'assets/icon_facebook_white.png',
+                                color: Colors.white54,
+                                height: 32.0,
                               ),
                             ),
-                            icon: Image.asset(
-                              'assets/icon_phone.png',
-                              color: Colors.white54,
-                              //height: 32.0,
+
+                            //twitter
+                            TextButton(
+                              onPressed: () {
+                                widget.browser.openUrlRequest(
+                                    urlRequest: URLRequest(url: Uri.parse("https://twitter.com/ApsleyLondon/")),
+                                    options: options);
+                              },
+                              style: TextButton.styleFrom(
+                                elevation: 0,
+                                padding: EdgeInsets.all(6.0),
+                                primary: Colors.white70,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(Radius.circular(24))),
+                              ),
+                              child: Image.asset(
+                                'assets/icon_twitter.png',
+                                color: Colors.white54,
+                                height: 32.0,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                  ), // Call us
-                ],
+                    ), // Social Networks
+                    Container(
+                      width: panelWidth,
+                      height: 64,
+                      padding: EdgeInsets.all(6.0),
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            TextButton.icon(
+                              onPressed: () => launch("tel://+44 20 3286 6718"),
+                              label: Text('+44 (0) 20 3286 6718'),
+                              style: TextButton.styleFrom(
+                                padding: EdgeInsets.all(12.0),
+                                primary: Colors.white70,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(24))),
+                                textStyle: TextStyle(
+                                  fontSize: 17.0,
+                                  letterSpacing: 2,
+                                  fontFamily: 'Montserrat',
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              ),
+                              icon: Image.asset(
+                                'assets/icon_phone.png',
+                                color: Colors.white54,
+                                //height: 32.0,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ), // Call us
+                  ],
+                ),
               ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    }
   }
 }
 
