@@ -278,7 +278,7 @@ class _MyAppState extends State<MyApp> {
 
                             // whatsapp
                             TextButton(
-                              onPressed: () => launch("whatsapp://send?phone=+447310714895text=Hello, I'd like to know more about your programs"),
+                              onPressed: () => launch("whatsapp://send?phone=+447310714895text=Dear Admissions Team, please tell me...."),
                               /*onPressed: () {
                               launchWhatsapp();
                             },*/
