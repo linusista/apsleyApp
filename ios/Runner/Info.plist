@@ -42,11 +42,11 @@
 	<key>io.flutter.embedded_views_preview</key>
     <string>YES</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<key>LSApplicationQueriesSchemes</key>
-          <array>
-            <string>https</string>
-            <string>http</string>
-          </array>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>https</string>
+		<string>http</string>
+	</array>
 </dict>
 </plist>
